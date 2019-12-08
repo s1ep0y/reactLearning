@@ -14,9 +14,8 @@ class App extends React.Component {
       pageTitle: "React components"
     }
   }
-  changeTitle = () =>{
-    let oldTitle = this.state.pageTitle
-    const newTitle = oldTitle + " (Changed)"
+  changeTitle = (newTitle) =>{
+    
     this.setState({
       pageTitle: newTitle
     }) 
@@ -31,8 +30,12 @@ class App extends React.Component {
     return (
       <div style={divStyle}>
       <h1>{this.state.pageTitle}</h1>
-      <button onClick={this.changeTitle}>Change title</button>
-        {cars.map((info)=> <Car name={info.name} year = {info.year} />)}
+      <button onClick={this.changeTitle.bind(this, 'Changed 1st btn')}>Change title</button>
+        {cars.map((info)=> 
+        <Car name={info.name} 
+        year = {info.year} 
+        onChangeTitle={this.changeTitle.bind(this, info.name)}
+        />)}
       </div>
     );
   }
