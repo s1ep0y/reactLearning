@@ -7,14 +7,20 @@ class App extends React.Component {
     super(props);
     this.state = {
       cars: [
-        {name: 'Ford', year: 2018},
+        {name: 'Ford', year: 2011},
         {name: 'Audi', year: 2016},
         {name: 'Mazda', year: 2010}
-      ]
+      ],
+      pageTitle: "React components"
     }
   }
-
-  
+  changeTitle = () =>{
+    let oldTitle = this.state.pageTitle
+    const newTitle = oldTitle + " (Changed)"
+    this.setState({
+      pageTitle: newTitle
+    }) 
+  }
   render() {
     const divStyle = {
       textAlign: 'center'
@@ -24,9 +30,9 @@ class App extends React.Component {
 
     return (
       <div style={divStyle}>
-        <h1>Cars</h1>
-        {this.state.cars.map((props)=> {
-        return <Car name={props.name} year = {props.year} />})}
+      <h1>{this.state.pageTitle}</h1>
+      <button onClick={this.changeTitle}>Change title</button>
+        {cars.map((info)=> <Car name={info.name} year = {info.year} />)}
       </div>
     );
   }
