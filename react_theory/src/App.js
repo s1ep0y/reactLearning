@@ -1,21 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 import Car from './car/car'
 
-function App() {
-  const divStyle = {
-    textAlign: 'center'
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      cars: [
+        {name: 'Ford', year: 2018},
+        {name: 'Audi', year: 2016},
+        {name: 'Mazda', year: 2010}
+      ]
+    }
   }
-  return (
-    <div className="App" style={divStyle}>
-      <h2>hello wolld</h2>
-      <Car name={'Ford'} year={2017}>
-          <p>Color</p>
-        </Car>
-      <Car name={'Audi'} year={2011}/>
-    </div>
-  );
+
+  
+  render() {
+    const divStyle = {
+      textAlign: 'center'
+    }
+
+    const cars = this.state.cars  
+
+    return (
+      <div style={divStyle}>
+        <h1>Cars</h1>
+        {this.state.cars.map((props)=> {
+        return <Car name={props.name} year = {props.year} />})}
+      </div>
+    );
+  }
 }
 
 export default App;
