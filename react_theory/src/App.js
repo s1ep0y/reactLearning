@@ -20,6 +20,13 @@ class App extends React.Component {
       pageTitle: newTitle
     }) 
   }
+
+  inputListen = (event) =>{
+    this.setState({
+      pageTitle: event.target.value
+    })
+  }
+
   render() {
     const divStyle = {
       textAlign: 'center'
@@ -30,6 +37,9 @@ class App extends React.Component {
     return (
       <div style={divStyle}>
       <h1>{this.state.pageTitle}</h1>
+      
+      <input type="text" onChange={this.inputListen}></input>
+
       <button onClick={this.changeTitle.bind(this, 'Changed 1st btn')}>Change title</button>
         {cars.map((info)=> 
         <Car name={info.name} 
