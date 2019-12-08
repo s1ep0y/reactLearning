@@ -15,7 +15,11 @@ class App extends React.Component {
   
 
   listenNote(event){
-    this.setState({value: event.target.value});
+    const target = event.target
+    const title = target.title
+    this.setState({
+      title: title
+    })
   }
   addNote(event){
     event.preventDefault();
@@ -27,8 +31,6 @@ class App extends React.Component {
       textAlign: 'center'
     }
 
-    // const notesList = this.state.notes
-
     return (
       <div style={divStyle}>
       {/* <h1>{this.state.pageTitle}</h1> */}
@@ -36,7 +38,7 @@ class App extends React.Component {
       <form onSubmit={this.addNote}>
         <label>
           Title:
-          <input type="text" name="title" onChange={this.state.listenNote}/>
+          <input type="text" name="title" onChange={this.listenNote} value={this.title}/>
         </label>
         <label>
           Text:
